@@ -9,10 +9,9 @@ has its unique name.
 
 Add timer
 
-```
-
+```php
 $loop = \React\EventLoop\Factory::create();
-$handler = new \Zwirek\Reactphp\Timer\Handler\TimerHandler($loop);
+$handler = new \Zwirek\React\Timer\Handler\TimerHandler($loop);
 
 $success = $handler->addTimer('example_timer', 1, function (React\EventLoop\Timer\Timer $timer) {
     echo 'example_timer', PHP_EOL;
@@ -28,9 +27,9 @@ echo 'done', PHP_EOL;
 
 You can not overwrite your timer accidentally. When run, you will see output from the first timer only.
 
-```
+```php
 $loop = \React\EventLoop\Factory::create();
-$handler = new \Zwirek\Reactphp\Timer\Handler\TimerHandler($loop);
+$handler = new \Zwirek\React\Timer\Handler\TimerHandler($loop);
 
 $first = $handler->addTimer('example_timer', 1, function (React\EventLoop\Timer\Timer $timer) {
     echo 'first', PHP_EOL;
@@ -50,9 +49,9 @@ echo 'done', PHP_EOL;
 ```
 
 Timer can be canceled by its name
-```
+```php
 $loop = \React\EventLoop\Factory::create();
-$handler = new \Zwirek\Reactphp\Timer\Handler\TimerHandler($loop);
+$handler = new \Zwirek\React\Timer\Handler\TimerHandler($loop);
 
 $timer = $handler->addTimer('example_timer', 1, function (React\EventLoop\Timer\Timer $timer) {
     echo 'example_timer', PHP_EOL;
@@ -66,10 +65,10 @@ echo 'done', PHP_EOL;
 ```
 
 `react/event-loop` allow to register periodic timer. TimerHandler also allow to register periodic timer by name
-```
+```php
 $loop = \React\EventLoop\Factory::create();
 
-$handler = new \Zwirek\Reactphp\Timer\Handler\TimerHandler($loop);
+$handler = new \Zwirek\React\Timer\Handler\TimerHandler($loop);
 
 $timer = $handler->addPeriodicTimer('periodic_timer', 1, function (React\EventLoop\Timer\Timer $timer) {});
 
@@ -77,10 +76,10 @@ $loop->run();
 ```
 
 It is possible to create periodic timer which will be executed limited number of times
-```
+```php
 $loop = \React\EventLoop\Factory::create();
 
-$handler = new \Zwirek\Reactphp\Timer\Handler\TimerHandler($loop);
+$handler = new \Zwirek\React\Timer\Handler\TimerHandler($loop);
 
 $timer = $handler->addLimitedPeriodicTimer('limited_periodic_timer', 1, function (React\EventLoop\Timer\Timer $timer) {}, 5);
 
@@ -89,7 +88,7 @@ $loop->run();
 Above timer execute registered handler 5 times at intervals of 1 seconds
 
 To cancel all registered times just simply run:
-```
+```php
 $handler->cancelAll();
 ```
 

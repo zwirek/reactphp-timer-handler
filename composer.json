@@ -1,6 +1,8 @@
 {
-    "name": "zwirek/reactphp-timer-handler",
+    "name": "zwirek/react-timer-handler",
     "type": "library",
+    "description": "Simple handler for ReactPHP timers",
+    "keywords": ["ReactPHP", "Timer", "react", "handler"],
     "license": "MIT",
     "authors": [
         {
@@ -10,15 +12,16 @@
     ],
     "autoload": {
         "psr-4": {
-            "Zwirek\\Reactphp\\Timer\\Handler\\": "src/"
+            "Zwirek\\React\\Timer\\Handler\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zwirek\\Reactphp\\Timer\\Handler\\Tests\\": "tests/"
+            "Zwirek\\React\\Timer\\Handler\\Tests\\": "tests/"
         }
     },
     "require": {
+        "php": "^7.1",
         "react/event-loop": "^1.1"
     },
     "require-dev": {

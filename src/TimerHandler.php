@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Zwirek\Reactphp\Timer\Handler;
+namespace Zwirek\React\Timer\Handler;
 
 use React\EventLoop\LoopInterface;
 use React\EventLoop\TimerInterface;

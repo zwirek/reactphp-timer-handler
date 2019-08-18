@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Zwirek\Reactphp\Timer\Handler\Tests;
+namespace Zwirek\React\Timer\Handler\Tests;
 
 use PHPUnit\Framework\TestCase;
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
 use React\EventLoop\TimerInterface;
-use Zwirek\Reactphp\Timer\Handler\TimerHandler;
+use Zwirek\React\Timer\Handler\TimerHandler;
 
 class TimerHandlerTest extends TestCase
 {
