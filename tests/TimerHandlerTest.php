@@ -76,10 +76,10 @@ class TimerHandlerTest extends TestCase
     {
         $timerHandler = new TimerHandler($this->loop);
 
-        $parameter = 'binded parameter';
+        $parameter = 'bound parameter';
 
         $timerHandler->addTimer('test', 0.005, function() use ($parameter) {
-            self::assertEquals('bind parameter', $parameter);
+            self::assertEquals('bound parameter', $parameter);
 
             $this->assertLoop();
         });
@@ -157,7 +157,7 @@ class TimerHandlerTest extends TestCase
         $timerHandler->addLimitedPeriodicTimer('limited', 0.005, function() use (&$counter) {
             $counter++;
 
-            if ($counter = 5) {
+            if ($counter === 5) {
                 $this->assertLoop();
             }
         }, 5);

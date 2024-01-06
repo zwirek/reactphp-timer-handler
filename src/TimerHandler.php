@@ -11,17 +11,17 @@ final class TimerHandler implements TimerHandlerInterface
     /**
      * @var LoopInterface
      */
-    private $loop;
+    private LoopInterface $loop;
 
     /**
      * @var TimerInterface[]
      */
-    private $timers = [];
+    private array $timers = [];
 
     /**
      * @var int[]
      */
-    private $limitedPeriodicTimerCounters = [];
+    private array $limitedPeriodicTimerCounters = [];
 
     public function __construct(LoopInterface $loop)
     {
@@ -43,7 +43,7 @@ final class TimerHandler implements TimerHandlerInterface
             $this->timers[$name] = null;
             unset($this->timers[$name]);
 
-            call_user_func($callback, $timer);
+            $callback($timer);
         });
 
         return true;
@@ -106,9 +106,9 @@ final class TimerHandler implements TimerHandlerInterface
         $this->limitedPeriodicTimerCounters[$name] = 0;
 
         $this->timers[$name] = $this->loop->addPeriodicTimer($interval, function (TimerInterface $timer) use ($callback, $name, $callLimit) {
-            call_user_func($callback, $timer);
+            $callback($timer);
 
-            if (++$this->limitedPeriodicTimerCounters >= $callLimit) {
+            if (++$this->limitedPeriodicTimerCounters[$name] >= $callLimit) {
                 $this->loop->cancelTimer($timer);
                 $this->timers[$name] = null;
                 unset($this->timers[$name]);
